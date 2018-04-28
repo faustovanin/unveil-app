@@ -1,6 +1,6 @@
 # Projeto Unveil 
 
-Esse projeto nasceu de uma oportunidade de desenvolver nas organiações em rede um maior acesso aos recursos atualmente existentes e diponíveis. Ele tem como primeira manifestação de ideal um <a href="https://medium.com/@faustovanin/manifesto-pelos-recursos-ocultos-6b62e7aba201"Manifesto pelos Recursos Ocultos</a>. Os principais princípios que norteiam esse manifesto e, consequentemente, esse projeto são:
+Esse projeto nasceu de uma oportunidade de desenvolver nas organiações em rede um maior acesso aos recursos atualmente existentes e diponíveis. Ele tem como primeira manifestação de ideal um <a href="https://medium.com/@faustovanin/manifesto-pelos-recursos-ocultos-6b62e7aba201">Manifesto pelos Recursos Ocultos</a>. Os principais princípios que norteiam esse manifesto e, consequentemente, esse projeto são:
 * Autonomia plena de cada indivíduo sobre aquilo que compartilha e que demanda
 * O valor gerado por um recurso que circula é muito maior do que a posse inativa
 * Ter conhecimento da casa e seus recursos
@@ -28,9 +28,4 @@ A ferramenta é uma combinação de uma série de soluções, a sua maioria em J
 * **Geração de QR Code:** Cada usuário terá seu QR Code para poder adicionar facilmente outros contatos. Para isso, está sendo utilizada a biblioteca <a href="http://goqr.me/api/doc/create-qr-code/">Go QR</a>
 * **Comunicação Peer-to-Peer:** Para realizar a comunicação entre as instãncias da aplicação está sendo utilizada a biblioteca <a href="https://socket.io">Socket.io</a>, em Node.JS no servidor de Signaling e no client Javascript dentro da aplicação. Ele será responsável pela troca de mensagens durante as buscas, sincronização de dados e disponibilização de recursos.
 
-<p align="center">
-  <a href="https://www.youtube.com/watch?v=HgJ0XCyBwzY&list=PLNYkxOF6rcIDdS7HWIC_BYRunV6MHs5xo&index=10">
-    <img src="https://img.youtube.com/vi/HgJ0XCyBwzY/0.jpg" alt="Polymer Starter Kit 2 video">
-  </a>
-</p>
 
