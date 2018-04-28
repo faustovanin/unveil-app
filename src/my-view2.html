@@ -1,0 +1,88 @@
+<!--
+@license
+Copyright (c) 2016 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+<link rel="import" href="../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../bower_components/paper-item/paper-item.html">
+<link rel="import" href="../bower_components/paper-item/paper-item-body.html">
+<link rel="import" href="../bower_components/paper-item/paper-icon-item.html">
+<link rel="import" href="../bower_components/paper-styles/paper-styles.html">
+<link rel="import" href="../bower_components/iron-icons/image-icons.html">
+<link rel="import" href="../bower_components/iron-icons/social-icons.html">
+<link rel="import" href="../bower_components/iron-icons/editor-icons.html">
+<link rel="import" href="../bower_components/iron-icon/iron-icon.html">
+<link rel="import" href="shared-styles.html">
+
+<dom-module id="my-view2">
+  <template>
+    <style include="shared-styles">
+      :host {
+        display: block;
+
+        padding: 10px;
+      }
+
+			iron-icon {
+				width: 40px;
+				height: 48px;
+			}
+
+			div[role="listbox"] {
+        border: 1px solid #e5e5e5;
+      }
+			div[role="listbox"] div {
+				color: black;
+			}
+    </style>
+
+    <div class="card">
+      <div class="circle"><iron-icon icon="icons:home"></iron-icon></div>
+      <h1>Meus Recursos Disponíveis</h1>
+			<div role="listbox">
+			<paper-icon-item>
+				<iron-icon icon="image:nature" slot="item-icon"></iron-icon>
+			<paper-item-body two-line>
+          <a href$="[[rootPath]]connection">
+					<div>Sala para Reuniões</div></a>
+					<div secondary>Espaço com internet, ar-condicionado, para 6 pessoas</div>
+				</paper-item-body>
+			</paper-icon-item>
+			<paper-icon-item>
+				<iron-icon icon="image:color-lens" slot="item-icon"></iron-icon>
+				<paper-item-body two-line>
+					<div>Livro "Reinventando as Organizações"</div>
+					<div secondary>Autor: Frederic Laloux</div>
+				</paper-item-body>
+			</paper-icon-item>
+			<paper-icon-item>
+				<iron-icon icon="social:group" slot="item-icon"></iron-icon>
+				<paper-item-body two-line>
+					<div>Conhecimento em Design Thinking</div>
+					<div secondary>Desenho de personas e jornada</div>
+				</paper-item-body>
+			</paper-icon-item>
+			<paper-icon-item>
+				<iron-icon icon="editor:attach-money" slot="item-icon"></iron-icon>
+				<paper-item-body two-line>
+					<div>Causas Sociais</div>
+					<div secondary>Espcialmente projetos voltados à primeira infância.</div>
+				</paper-item-body>
+			</paper-icon-item>
+			</div>
+		</div>
+  </template>
+
+  <script>
+    class MyView2 extends Polymer.Element {
+      static get is() { return 'my-view2'; }
+    }
+
+    window.customElements.define(MyView2.is, MyView2);
+  </script>
+</dom-module>

@@ -1,0 +1,53 @@
+<!-- Load the Polymer.Element base class -->
+<link rel="import" href="../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../bower_components/paper-checkbox/paper-checkbox.html">
+<link rel="import" href="../bower_components/iron-icons/social-icons.html">
+<link rel="import" href="hashform.html">
+<link rel="import" href="new-contact.html">
+<link rel="import" href="shared-styles.html">
+<script src="../js/tracking-min.js"></script>
+<script src="../js/face.js"></script>
+<script src="../js/sjcl.js" type="text/javascript"></script>
+<script src="../js/bundle.js"></script>
+
+<dom-module id="my-new-view">
+  <!-- Defines the element's style and local DOM -->
+  <template is="dom-bind">
+    <style include="shared-styles">
+      :host {
+        display: block;
+
+        padding: 10px;
+      }
+			iron-icon {
+				width: 48px;
+				height: auto;
+			}
+    </style>
+
+		<div class="card">
+		<div class="circle"><iron-icon icon="social:person"></iron-icon></div>
+    <h1>Meus Dados</h1>
+    <form type="get">
+          <hash-form hash="{{_hash}}"></hash-form>
+    </form>
+		</div>
+  </template>
+
+  <script>
+    // Your new element extends the Polymer.Element base class
+    class MyNewView extends Polymer.Element {
+      static get is() { return 'my-new-view'; }
+			static get properties() {
+				return {
+					_hash: {
+						type: String,
+						value: ""
+					}
+				}
+			}
+    }
+    //Now, register your new custom element so the browser can use it
+    customElements.define(MyNewView.is, MyNewView);
+  </script>
+</dom-module>

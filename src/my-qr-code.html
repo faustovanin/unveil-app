@@ -1,0 +1,36 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="shared-styles.html">
+<link rel="import" href="../bower_components/granite-qrcode-scanner/granite-qrcode-scanner.html">
+
+<dom-module id="qr-code">
+	<style include="shared-styles">
+		#close {
+			position: absolute;
+			right: 10px;
+			top: 10px;
+		}
+	</style>
+	<template>
+		<div>
+		<div id="close" on-click="close">X</div>
+		<granite-qrcode-scanner on-qrcode-decoded="decode" data="{{data}}"></granite-qrcode-scanner>
+		</div>
+	</template>
+
+	<script>
+		class QrCode extends Polymer.Element {
+			static get is() { return "qr-code"; }
+			decode() {
+				console.log("QR Decoded");
+				close();
+			}
+			close() {
+				var userMedia = navigator.getUserMedia();
+				userMedia.getVideoTracks()[0].stop();
+			}
+		}
+		
+customElements.define('qr-code', QrCode);
+	</script>
+
+</dom-module>

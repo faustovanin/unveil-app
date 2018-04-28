@@ -1,0 +1,60 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="shared-styles.html">
+
+<dom-module id="hash-form">
+	<template>
+		<style include="shared-styles"></style>
+
+		<input placeholder="E-Mail" type="text" id="email" value={{email}}  length="50"/>
+		<input placeholder="Password" type="password" id="pass" length="12"/><br/>
+          <button class="btn" on-click="getHash">Gerar Hash</button><br/>
+		Chave P&uacute;blica X<br/><input type="text" name="hash_x" id="hash_x" size="50" disabled/><br/>
+		Chave P&uacute;blica Y<br/><input type="text" name="hash_y" id="hash_y" size="50" disabled/><br/>
+		Assinatura Digital R<br/><input type="text" name="hash_r" id="hash_r" size="50" disabled/><br/>
+		Assiantura Digital S<br/><input type="text" name="hash_s" id="hash_s" size="50" disabled/><br/>
+	</template>
+<script>
+  Polymer({
+    is: 'hash-form',
+    getHash: function() {
+            var msgHashBits = sjcl.hash.sha256.hash(this.$.email.value.trim()+this.$.pass.value.trim(), true);
+            var msgHash = sjcl.codec.hex.fromBits(msgHashBits);
+            var signedMessage = new SignedMessage(msgHash);
+
+            this.$.hash_x.value = signedMessage.keypair.getPublic().getX().toString('hex'); 
+            this.$.hash_y.value = signedMessage.keypair.getPublic().getY().toString('hex'); 
+            this.$.hash_r.value = signedMessage.signature.r.toString();
+            this.$.hash_s.value = signedMessage.signature.s.toString();
+
+						var qrCode = document.createElement('img');
+						qrCode.setAttribute('src', 'https://api.qrserver.com/v1/create-qr-code/?data='+this.$.hash_x.value+'&amp;size=100x100');
+						Polymer.dom(this.root).appendChild(qrCode);
+
+
+			var myData = {
+				"email": this.$.email.value,
+				"hash-x": this.$.hash_x.value,
+				"hash-y": this.$.hash_y.value
+			}
+
+			io.emit('user-created', JSON.stringify(myData), 'unveil');
+    },
+
+    properties: {
+      hash: { 
+        type: String,
+        notify: true
+      }
+    },
+
+    listeners: {
+      'button': '_onForm'
+    },
+
+    _onForm: function() {
+	this.hash = "hash gerado";
+    }
+
+});
+</script>
+</dom-module>
